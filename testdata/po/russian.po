@@ -1,0 +1,12 @@
+msgid ""
+msgstr ""
+"Language: russian\n"
+"Project-Id-Version: test\n"
+
+msgctxt "UI_OK"
+msgid "OK"
+msgstr "Ок"
+
+msgctxt "UI_EXIT"
+msgid "Exit"
+msgstr "Выход"

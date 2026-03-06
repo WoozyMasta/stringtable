@@ -51,3 +51,27 @@ func TestSelectLanguagesFallback(t *testing.T) {
 		t.Fatalf("first language = %q, expected excluded language to be removed", got[0])
 	}
 }
+
+func TestLanguageCode(t *testing.T) {
+	t.Parallel()
+
+	code, ok := LanguageCode("russian")
+	if !ok {
+		t.Fatal("LanguageCode(russian) not found")
+	}
+	if code != "ru" {
+		t.Fatalf("LanguageCode(russian) = %q, want %q", code, "ru")
+	}
+}
+
+func TestLanguageNameFromCode(t *testing.T) {
+	t.Parallel()
+
+	name, ok := LanguageNameFromCode("zh-Hans")
+	if !ok {
+		t.Fatal("LanguageNameFromCode(zh-Hans) not found")
+	}
+	if name != "chinesesimp" {
+		t.Fatalf("LanguageNameFromCode(zh-Hans) = %q, want %q", name, "chinesesimp")
+	}
+}

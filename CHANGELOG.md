@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning][].
 ### Removed
 -->
 
+## [0.1.1][] - 2026-03-06
+
+### Added
+
+* Added simple DayZ language-code helpers
+ (`LanguageCode`, `LanguageNameFromCode`)
+ for easier integration with translation providers.
+
+[0.1.1]: https://github.com/WoozyMasta/paa/compare/v0.1.0...v0.1.1
+
 ## [0.1.0][] - 2026-03-05
 
 ### Added

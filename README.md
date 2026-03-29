@@ -12,6 +12,7 @@ It provides:
 * merge/update helpers between CSV and PO catalogs
 * PO directory helpers (`ReadCatalogSet`, `WriteCatalogSet`)
 * optional build header management (`UpdateBuildHeaders`)
+* lint diagnostics registry and lintkit provider integration
 
 ## Install
 
@@ -65,3 +66,13 @@ Use `WriteOptions.UseTableLanguagesOnly` to keep only current table columns.
 
 `UpdateBuildHeaders` can write common headers, content hash, and update
 `PO-Revision-Date` or `POT-Creation-Date` only when content actually changed.
+
+## Lint Integration
+
+Lint diagnostics docs:
+
+* machine-readable snapshot: [rules.yaml](rules.yaml)
+* human-readable table: [RULES.md](RULES.md)
+
+`RULES.md` contains only `stringtable` CSV rules (`scope=csv`).
+Runtime lint provider may also include nested diagnostics from `pofile`.

@@ -109,11 +109,11 @@ tool-lintkit:
 
 diag-doc:
 	$(LINTKIT) snapshot --scope csv -f yaml rules.yaml
-	$(LINTKIT) doc -t table rules.yaml RULES.md
+	$(LINTKIT) doc -t table -w 76 rules.yaml RULES.md
 
 diag-doc-check:
 	$(LINTKIT) snapshot --scope csv -cf yaml rules.yaml
-	$(LINTKIT) doc -ct table rules.yaml RULES.md
+	$(LINTKIT) doc -ct table -w 76 rules.yaml RULES.md
 
 release-notes:
 	@awk '\

@@ -1,0 +1,118 @@
+modules:
+  - id: pofile
+    name: PO File
+    description: Lint rules for Gettext PO parsing and semantic checks.
+  - id: stringtable
+rules:
+  - id: stringtable.csv.header-language-column-name-must-be-non-empty
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2001
+    message: header language column name must be non-empty
+    description: Every translation column after `Language,original` must have a non-empty language name.
+    default_severity: error
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.header-language-columns-must-be-unique
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2002
+    message: header language columns must be unique
+    description: Each language column name should appear once. Duplicate names make column mapping ambiguous for parsers and exporters.
+    default_severity: error
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.header-contains-unknown-language-name
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2003
+    message: header contains unknown language name
+    description: Language columns after `Language,original` must use supported DayZ language names. Rename unsupported columns or update conversion flow.
+    default_severity: error
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.header-is-missing-default-languages
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2004
+    message: header is missing default languages
+    description: Add missing DayZ default language columns to keep expected export order and avoid incomplete localization coverage.
+    default_severity: warning
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.row-column-count-must-match-header-column-count
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2005
+    message: row column count must match header column count
+    description: Every data row must have the same number of cells as the header; extra or missing cells shift translations into wrong languages.
+    default_severity: error
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.translation-key-must-be-unique
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2006
+    message: translation key must be unique
+    description: Duplicate `Language` keys create ambiguous lookup and merge behavior. Keep exactly one row per key.
+    default_severity: error
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.translation-key-has-surrounding-spaces
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2007
+    message: translation key has surrounding spaces
+    description: Keys with surrounding spaces are hard to spot and may behave as different tokens than visually similar trimmed keys.
+    default_severity: warning
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.translation-key-must-match-key-pattern
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2008
+    message: translation key must match key pattern
+    description: Keep keys machine-safe and deterministic. Change `pattern` option only when project naming rules intentionally differ.
+    default_severity: error
+    default_options:
+      pattern: ^[-_A-Za-z0-9]+$
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.original-column-must-be-non-empty
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2009
+    message: '`original` column must be non-empty'
+    description: '`original` stores the source text. Empty source usually means broken authoring or accidental row damage.'
+    default_severity: error
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.translation-columns-should-be-non-empty
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2010
+    message: translation columns should be non-empty
+    description: Empty translation is allowed but likely unfinished localization. Fill value or intentionally suppress this warning in your workflow.
+    default_severity: warning
+    file_kinds:
+      - stringtable.csv
+  - id: stringtable.csv.non-key-cells-should-be-quoted
+    module: stringtable
+    scope: csv
+    scope_description: Stringtable CSV structure and translation diagnostics.
+    code: STBL2011
+    message: non-key cells should be quoted
+    description: Quote `original` and translation cells to keep CSV stable when text contains commas, quotes, or leading/trailing spaces.
+    default_severity: warning
+    file_kinds:
+      - stringtable.csv

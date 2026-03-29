@@ -58,7 +58,7 @@ var diagnosticCatalog = []lint.CodeSpec{
 		lint.WarningCodeSpec(
 			CodeLintMissingDefaultLanguages,
 			StageLint,
-			"header is missing required default language columns",
+			"header is missing default languages",
 		),
 		"Add missing DayZ default language columns to keep expected export order "+
 			"and avoid incomplete localization coverage.",
@@ -85,7 +85,7 @@ var diagnosticCatalog = []lint.CodeSpec{
 		lint.WarningCodeSpec(
 			CodeLintKeyTrimMismatch,
 			StageLint,
-			"translation key should not have leading or trailing spaces",
+			"translation key has surrounding spaces",
 		),
 		"Keys with surrounding spaces are hard to spot and may behave as "+
 			"different tokens than visually similar trimmed keys.",
@@ -95,7 +95,7 @@ var diagnosticCatalog = []lint.CodeSpec{
 			lint.ErrorCodeSpec(
 				CodeLintInvalidKeyPattern,
 				StageLint,
-				"translation key must match configured token pattern",
+				"translation key must match key pattern",
 			),
 			KeyPatternRuleOptions{Pattern: DefaultKeyPattern},
 		),

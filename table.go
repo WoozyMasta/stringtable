@@ -302,14 +302,42 @@ func resolveWriteLanguages(table *Table, options *WriteOptions) []string {
 		return normalizeLanguageOrder(table.Languages)
 	}
 
-	candidates := make([]string, 0, len(DefaultLanguages)+len(table.Languages))
-	candidates = append(candidates, DefaultLanguages...)
-	candidates = append(candidates, table.Languages...)
+	estimated := len(DefaultLanguages) + len(table.Languages)
+	for rowIndex := range table.Rows {
+		estimated += len(table.Rows[rowIndex].Translations)
+	}
+
+	out := make([]string, 0, estimated)
+	seen := make(map[string]struct{}, estimated)
+	for _, language := range DefaultLanguages {
+		out = appendUniqueTrimmedLanguage(out, seen, language)
+	}
+	for _, language := range table.Languages {
+		out = appendUniqueTrimmedLanguage(out, seen, language)
+	}
 	for _, row := range table.Rows {
 		for language := range row.Translations {
-			candidates = append(candidates, language)
+			out = appendUniqueTrimmedLanguage(out, seen, language)
 		}
 	}
 
-	return normalizeLanguageOrder(candidates)
+	return out
+}
+
+// appendUniqueTrimmedLanguage appends non-empty unique language names.
+func appendUniqueTrimmedLanguage(
+	out []string,
+	seen map[string]struct{},
+	language string,
+) []string {
+	trimmed := strings.TrimSpace(language)
+	if trimmed == "" {
+		return out
+	}
+	if _, ok := seen[trimmed]; ok {
+		return out
+	}
+
+	seen[trimmed] = struct{}{}
+	return append(out, trimmed)
 }

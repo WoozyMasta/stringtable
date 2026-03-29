@@ -1,2 +1,6 @@
-github.com/woozymasta/pofile v0.1.1 h1:CVxjpDu4ywhdNx/Yl9FYG1iFdvv/NcserWrjaME+/Fk=
-github.com/woozymasta/pofile v0.1.1/go.mod h1:gBlkoKdTCgL8oZj9I0pYl9YSVyLmsfr4rSXDJ87AFiQ=
+github.com/woozymasta/lintkit v0.2.2 h1:ILTQ4sTf2UvTQ7567ROmv+4ZuJB+1VmKtikOWAP0tIU=
+github.com/woozymasta/lintkit v0.2.2/go.mod h1:VKGsQVFUdIW9XYxHA3WJPHOKSGIGJ9O+S4vFb/nBd/k=
+github.com/woozymasta/pathrules v0.1.2 h1:RXETYaAaADfyJEJkbMVUaVcmPkbtpALWwXClO6Ssvtc=
+github.com/woozymasta/pathrules v0.1.2/go.mod h1:80PI6so6HaHEs1JKqYjI50NH/IUediJkdygKIfMbuIc=
+github.com/woozymasta/pofile v0.2.0 h1:CrDqAU3/ffvqjQtVfTbegUUoZVTQ35/CXVFOeKl6O5g=
+github.com/woozymasta/pofile v0.2.0/go.mod h1:/xKx6eysd0bKFr85ANf3VTbl0R746gocg+dh4QPVq1Q=

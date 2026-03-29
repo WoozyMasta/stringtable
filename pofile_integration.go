@@ -127,18 +127,34 @@ func UpdateCatalogFromTable(
 		out.SetHeader("Language", language)
 	}
 
+	if existing == nil {
+		out.Messages = make([]*pofile.Message, 0, len(table.Rows))
+		for _, row := range table.Rows {
+			if row.Key == "" {
+				continue
+			}
+
+			translation := row.Translations[language]
+			message := &pofile.Message{
+				Context:      row.Key,
+				ID:           row.Original,
+				Translations: map[int]string{0: translation},
+			}
+			out.Messages = append(out.Messages, message)
+		}
+
+		return out, nil
+	}
+
 	for _, row := range table.Rows {
 		if row.Key == "" {
 			continue
 		}
 
 		translation := row.Translations[language]
-		var source *pofile.Message
-		if existing != nil {
-			source = existing.FindMessage(row.Key, row.Original)
-			if source != nil {
-				translation = source.TranslationAt(0)
-			}
+		source := existing.FindMessage(row.Key, row.Original)
+		if source != nil {
+			translation = source.TranslationAt(0)
 		}
 
 		target := out.UpsertMessage(row.Key, row.Original, translation)

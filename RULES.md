@@ -119,8 +119,8 @@ Translation key must be unique
 
 Translation key has surrounding spaces
 
-> Keys with surrounding spaces are hard to spot and may behave as different tokens
-> than visually similar trimmed keys.
+> Keys with surrounding spaces are hard to spot and may behave as different
+> tokens than visually similar trimmed keys.
 
 | Field | Value |
 | --- | --- |
@@ -156,8 +156,8 @@ Default options:
 
 `Original` column must be non-empty
 
-> `original` stores the source text. Empty source usually means broken authoring
-> or accidental row damage.
+> `original` stores the source text. Empty source usually means broken
+> authoring or accidental row damage.
 
 | Field | Value |
 | --- | --- |
@@ -171,8 +171,8 @@ Default options:
 
 Translation columns should be non-empty
 
-> Empty translation is allowed but likely unfinished localization. Fill value or
-> intentionally suppress this warning in your workflow.
+> Empty translation is allowed but likely unfinished localization. Fill value
+> or intentionally suppress this warning in your workflow.
 
 | Field | Value |
 | --- | --- |
